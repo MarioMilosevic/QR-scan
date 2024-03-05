@@ -2,13 +2,15 @@ import { useState } from "react";
 import scanner from "./assets/scanner.png";
 import Button from "./components/Button";
 import Timer from "./components/Timer";
-const ImgContainer = ({ warning }) => {
+
+const ImgContainer = ({ warning, cursor }) => {
   const [timer, setTimer] = useState(10);
+  const [color, setColor] = useState("bg-green-400");
   const decrementTimer = () => {
     setTimer((prev) => prev - 1);
   };
-  const [color, setColor] = useState("bg-green-400");
 
+//   kada istekne tajmer da buttonima dam cursor pointer i onClick dje ce da stave isLoaded na false, timer na 10 boju zelenu 
   return (
     <div className="border border-black rounded-lg mt-4 flex justify-between p-4">
       <div className="flex">
@@ -20,17 +22,17 @@ const ImgContainer = ({ warning }) => {
               className="w-[150px] h-[150px] mb-8"
             />
             <p className="mb-2">{warning}</p>
-            <Button />
+            <Button value={"Generate"} cursor={cursor} />
           </div>
         </div>
       </div>
-      <Timer timer={timer} decrementTimer={decrementTimer} changeColor={() => setColor("bg-red-400")}/>
-      {/* <span className="self-center h-8 text-2xl">{timer} s</span> */}
-
+      <Timer
+        timer={timer}
+        decrementTimer={decrementTimer}
+        changeColor={() => setColor("bg-red-400")}
+      />
       <div>
-        <button className="border border-black px-4 py-2 rounded-lg ">
-          Download
-        </button>
+        <Button value={"Download"} cursor={"cursor-pointer"}/>
       </div>
     </div>
   );
