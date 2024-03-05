@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 
-const Timer = () => {
-  const [timer, setTimer] = useState(10);
+const Timer = ({ timer, decrementTimer, changeColor }) => {
   const timerId = useRef();
 
   useEffect(() => {
     timerId.current = setInterval(() => {
-      setTimer((prev) => prev - 1);
+      decrementTimer();
     }, 1000);
     return () => clearInterval(timerId.current);
   }, []);
@@ -14,7 +13,7 @@ const Timer = () => {
   useEffect(() => {
     if (timer <= 0) {
       clearInterval(timerId.current);
-      console.log("kraj");
+      changeColor();
     }
   }, [timer]);
 
