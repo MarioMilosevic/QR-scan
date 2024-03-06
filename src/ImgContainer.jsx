@@ -4,11 +4,11 @@ import Button from "./components/Button";
 import Timer from "./components/Timer";
 
 const ImgContainer = ({ warning, cursor }) => {
-  const [timer, setTimer] = useState(10);
   const [color, setColor] = useState("bg-green-400");
-  const decrementTimer = () => {
-    setTimer((prev) => prev - 1);
-  };
+  const [generateButton, setGenerateButton] = useState('cursor-not-allowed')
+  // const decrementTimer = () => {
+  //   setTimer((prev) => prev - 1);
+  // };
 
 //   kada istekne tajmer da buttonima dam cursor pointer i onClick dje ce da stave isLoaded na false, timer na 10 boju zelenu 
   return (
@@ -22,14 +22,13 @@ const ImgContainer = ({ warning, cursor }) => {
               className="w-[150px] h-[150px] mb-8"
             />
             <p className="mb-2">{warning}</p>
-            <Button value={"Generate"} cursor={cursor} />
+            <Button value={"Generate"} cursor={generateButton} />
           </div>
         </div>
       </div>
       <Timer
-        timer={timer}
-        decrementTimer={decrementTimer}
         changeColor={() => setColor("bg-red-400")}
+        changeCursor ={() => setGenerateButton('cursor-pointer')}
       />
       <div>
         <Button value={"Download"} cursor={"cursor-pointer"}/>

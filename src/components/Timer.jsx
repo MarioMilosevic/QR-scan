@@ -1,7 +1,11 @@
-import { useRef, useEffect } from "react";
-
-const Timer = ({ timer, decrementTimer, changeColor }) => {
+import { useRef, useEffect, useState } from "react";
+const Timer = ({ changeColor, changeCursor }) => {
+  const [timer, setTimer] = useState(10);
   const timerId = useRef();
+
+  const decrementTimer = () => {
+    setTimer((prev) => prev - 1);
+  };
 
   useEffect(() => {
     timerId.current = setInterval(() => {
@@ -14,6 +18,7 @@ const Timer = ({ timer, decrementTimer, changeColor }) => {
     if (timer <= 0) {
       clearInterval(timerId.current);
       changeColor();
+      changeCursor()
     }
   }, [timer]);
 
