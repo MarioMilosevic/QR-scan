@@ -6,9 +6,10 @@ import ImgContainer from "./ImgContainer";
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [warning, setWarning] = useState("");
-  const [cursor, setCursor] = useState('cursor-not-allowed')
+  // const [generateButton, setGenerateButton] = useState("cursor-not-allowed");
+  // const [cursor, setCursor] = useState('cursor-not-allowed')
+  const [isActive, setIsActive] = useState(false)
   const [color, setColor] = useState("bg-green-400");
-  const [generateButton, setGenerateButton] = useState("cursor-not-allowed");
   const [timer, setTimer] = useState(10);
 
   useEffect(() => {
@@ -17,9 +18,6 @@ const App = () => {
     }, 2000);
   }, []);
 
-  // const decrementTimer = () => {
-  //   setTimer((prev) => prev - 1);
-  // };
 
   const generateNewRequest = () => {
     if(timer <= 0) {
@@ -35,13 +33,12 @@ const App = () => {
     }
   }
 
-
   return (
     <>
-      <Header cursor={cursor} generateNewRequest={generateNewRequest}/>
+      <Header isActive={isActive} generateNewRequest={generateNewRequest}/>
       {!isLoaded && <LoadingSpinner />}
 
-      {isLoaded && <ImgContainer generateNewRequest={generateNewRequest} cursor={cursor} warning={warning} cursorHandler={setCursor} warningHandler={setWarning} isLoadedHandler={setIsLoaded} color={color} colorHandler={setColor} generateButton={generateButton} generateButtonHandler={setGenerateButton} timer={timer} timerHandler={setTimer}/>}
+      {isLoaded && <ImgContainer generateNewRequest={generateNewRequest} warning={warning} warningHandler={setWarning} isLoadedHandler={setIsLoaded} color={color} colorHandler={setColor} timer={timer} timerHandler={setTimer}/>}
     </>
   );
 };

@@ -8,6 +8,7 @@ const Timer = ({
   warningHandler,
 }) => {
   const timerId = useRef();
+
   useEffect(() => {
     timerId.current = setInterval(() => {
       decrementTimer();

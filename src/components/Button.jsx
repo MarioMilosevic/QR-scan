@@ -1,7 +1,13 @@
-const Button = ({ value, cursor, clickHandler }) => {
+const Button = ({ isActive, clickHandler, children }) => {
+  const baseClass = `px-4 py-2 rounded-lg duration-200`;
+  const extraClass = isActive ? "bg-green-400" : "bg-gray-500";
   return (
-    <button className={`px-4 py-2 rounded-lg bg-slate-300 duration-200 ${cursor} hover:bg-slate-200`} onClick={clickHandler}>
-      {value}
+    <button
+      className={`${baseClass} ${extraClass}`}
+      disabled={isActive}
+      onClick={clickHandler}
+    >
+      {children}
     </button>
   );
 };

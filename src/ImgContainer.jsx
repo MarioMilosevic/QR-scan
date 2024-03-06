@@ -30,10 +30,12 @@ const ImgContainer = ({
             />
             <p className="mb-2">{warning}</p>
             <Button
-              value={"Generate"}
               cursor={generateButton}
               clickHandler={generateNewRequest}
-            />
+              isActive={false}
+            >
+              Generate
+            </Button>
           </div>
         </div>
       </div>
@@ -47,10 +49,11 @@ const ImgContainer = ({
       />
       <div>
         <Button
-          value={"Download"}
           cursor={"cursor-pointer"}
           clickHandler={() => console.log("download")}
-        />
+        >
+          Download
+        </Button>
       </div>
     </div>
   );
