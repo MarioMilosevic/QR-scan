@@ -3,12 +3,10 @@ import scanner from "./assets/scanner.png";
 import Button from "./components/Button";
 import Timer from "./components/Timer";
 
-const ImgContainer = ({ warning, cursor }) => {
+const ImgContainer = ({ warning, changeCursor }) => {
   const [color, setColor] = useState("bg-green-400");
   const [generateButton, setGenerateButton] = useState('cursor-not-allowed')
-  // const decrementTimer = () => {
-  //   setTimer((prev) => prev - 1);
-  // };
+
 
 //   kada istekne tajmer da buttonima dam cursor pointer i onClick dje ce da stave isLoaded na false, timer na 10 boju zelenu 
   return (
@@ -28,7 +26,8 @@ const ImgContainer = ({ warning, cursor }) => {
       </div>
       <Timer
         changeColor={() => setColor("bg-red-400")}
-        changeCursor ={() => setGenerateButton('cursor-pointer')}
+        changeGenerateBtnCursor ={() => setGenerateButton('cursor-pointer')}
+        changeCursor={changeCursor}
       />
       <div>
         <Button value={"Download"} cursor={"cursor-pointer"}/>

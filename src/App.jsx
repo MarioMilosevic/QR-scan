@@ -17,9 +17,9 @@ const App = () => {
 
   return (
     <>
-      <Header cursor={cursor} changeCursor={() => setCursor()}/>
+      <Header cursor={cursor} />
       {!isLoaded && <LoadingSpinner />}
-      {isLoaded && <ImgContainer cursor={cursor} warning={warning} />}
+      {isLoaded && <ImgContainer cursor={cursor} warning={warning} changeCursor={() => setCursor("cursor-pointer")}/>}
     </>
   );
 };
