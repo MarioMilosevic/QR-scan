@@ -3,7 +3,7 @@ import scanner from "./assets/scanner.png";
 import Button from "./components/Button";
 import Timer from "./components/Timer";
 
-const ImgContainer = ({ warning, changeCursor }) => {
+const ImgContainer = ({ warning, changeCursor, changeWarning }) => {
   const [color, setColor] = useState("bg-green-400");
   const [generateButton, setGenerateButton] = useState('cursor-not-allowed')
 
@@ -25,12 +25,13 @@ const ImgContainer = ({ warning, changeCursor }) => {
         </div>
       </div>
       <Timer
-        changeColor={() => setColor("bg-red-400")}
+        changeImgColor={() => setColor("bg-red-400")}
         changeGenerateBtnCursor ={() => setGenerateButton('cursor-pointer')}
         changeCursor={changeCursor}
+        changeWarning={changeWarning}
       />
       <div>
-        <Button value={"Download"} cursor={"cursor-pointer"}/>
+        <Button value={"Download"} cursor={"cursor-pointer"} clickHandler={() => console.log('download')}/>
       </div>
     </div>
   );

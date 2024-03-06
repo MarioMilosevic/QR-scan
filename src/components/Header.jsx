@@ -1,8 +1,8 @@
 import Button from "./Button"
-export const Header = ({cursor, changeCursor}) => {
+export const Header = ({cursor}) => {
   return (
     <div className='p-4 border border-black text-right rounded-xl'>
-        <Button value={"Generate"} cursor={cursor} changeCursor={() => changeCursor("cursor-pointer")}/>
+        <Button value={"Generate"} cursor={cursor} />
     </div>
   )
 }
