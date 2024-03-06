@@ -2,8 +2,8 @@ import { useRef, useEffect } from "react";
 const Timer = ({
   timer,
   decrementTimer,
-  changeImgColor,
-  changeGenerateBtnCursor,
+  colorHandler,
+  generateButtonHandler,
   cursorHandler,
   warningHandler,
 }) => {
@@ -18,9 +18,9 @@ const Timer = ({
   useEffect(() => {
     if (timer <= 0) {
       clearInterval(timerId.current);
-      changeImgColor();
-      changeGenerateBtnCursor();
-      cursorHandler();
+      colorHandler("bg-red-400");
+      generateButtonHandler('cursor-pointer')
+      cursorHandler('cursor-pointer');
       warningHandler("Time is up !");
     }
   }, [timer]);
