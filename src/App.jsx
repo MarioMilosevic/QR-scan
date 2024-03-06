@@ -6,39 +6,44 @@ import ImgContainer from "./ImgContainer";
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [warning, setWarning] = useState("");
-  // const [generateButton, setGenerateButton] = useState("cursor-not-allowed");
-  // const [cursor, setCursor] = useState('cursor-not-allowed')
-  const [isActive, setIsActive] = useState(false)
-  const [color, setColor] = useState("bg-green-400");
   const [timer, setTimer] = useState(10);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoaded(true);  
+      setIsLoaded(true);
     }, 2000);
   }, []);
 
-
   const generateNewRequest = () => {
-    if(timer <= 0) {
-      setIsLoaded(false)
-      setColor("bg-green-400")
-      setCursor('cursor-not-allowed')
-      setGenerateButton('cursor-not-allowed')
-      setWarning('')
-      setTimer(10)
+    if (timer <= 0) {
+      setIsLoaded(false);
+      setWarning("");
+      setTimer(10);
+      setIsActive(false);
       setTimeout(() => {
-        setIsLoaded(true);  
+        setIsLoaded(true);
       }, 2000);
     }
-  }
+  };
 
   return (
     <>
-      <Header isActive={isActive} generateNewRequest={generateNewRequest}/>
+      <Header isActive={isActive} generateNewRequest={generateNewRequest} />
       {!isLoaded && <LoadingSpinner />}
 
-      {isLoaded && <ImgContainer generateNewRequest={generateNewRequest} warning={warning} warningHandler={setWarning} isLoadedHandler={setIsLoaded} color={color} colorHandler={setColor} timer={timer} timerHandler={setTimer}/>}
+      {isLoaded && (
+        <ImgContainer
+          generateNewRequest={generateNewRequest}
+          isActive={isActive}
+          isActiveHandler={setIsActive}
+          warning={warning}
+          warningHandler={setWarning}
+          isLoadedHandler={setIsLoaded}
+          timer={timer}
+          timerHandler={setTimer}
+        />
+      )}
     </>
   );
 };

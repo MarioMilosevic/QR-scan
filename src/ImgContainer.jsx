@@ -4,19 +4,17 @@ import Timer from "./components/Timer";
 
 const ImgContainer = ({
   generateNewRequest,
-  color,
-  colorHandler,
-  generateButton,
-  generateButtonHandler,
+  isActive,
+  isActiveHandler,
   timer,
   timerHandler,
   warning,
-  cursorHandler,
   warningHandler,
 }) => {
   const decrementTimer = () => {
     timerHandler((prev) => prev - 1);
   };
+  const color = isActive ? "bg-red-400" : "bg-green-400";
 
   return (
     <div className="border border-black rounded-lg mt-4 flex justify-between p-4">
@@ -29,11 +27,7 @@ const ImgContainer = ({
               className="w-[150px] h-[150px] mb-8"
             />
             <p className="mb-2">{warning}</p>
-            <Button
-              cursor={generateButton}
-              clickHandler={generateNewRequest}
-              isActive={false}
-            >
+            <Button clickHandler={generateNewRequest} isActive={isActive}>
               Generate
             </Button>
           </div>
@@ -42,15 +36,13 @@ const ImgContainer = ({
       <Timer
         timer={timer}
         decrementTimer={decrementTimer}
-        colorHandler={colorHandler}
-        generateButtonHandler={generateButtonHandler}
-        cursorHandler={cursorHandler}
         warningHandler={warningHandler}
+        isActiveHandler={isActiveHandler}
       />
       <div>
         <Button
-          cursor={"cursor-pointer"}
           clickHandler={() => console.log("download")}
+          isActive={isActive}
         >
           Download
         </Button>
