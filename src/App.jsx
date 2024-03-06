@@ -19,7 +19,7 @@ const App = () => {
     <>
       <Header cursor={cursor} />
       {!isLoaded && <LoadingSpinner />}
-      {isLoaded && <ImgContainer cursor={cursor} warning={warning} changeCursor={() => setCursor("cursor-pointer")} changeWarning={() => setWarning('Time is up !')}/>}
+      {isLoaded && <ImgContainer cursor={cursor} warning={warning} cursorHandler={setCursor} warningHandler={setWarning} isLoadedHandler={setIsLoaded}/>}
     </>
   );
 };

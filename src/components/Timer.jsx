@@ -1,12 +1,13 @@
-import { useRef, useEffect, useState } from "react";
-const Timer = ({ changeImgColor, changeGenerateBtnCursor, changeCursor, changeWarning }) => {
-  const [timer, setTimer] = useState(10);
+import { useRef, useEffect } from "react";
+const Timer = ({
+  timer,
+  decrementTimer,
+  changeImgColor,
+  changeGenerateBtnCursor,
+  cursorHandler,
+  warningHandler,
+}) => {
   const timerId = useRef();
-
-  const decrementTimer = () => {
-    setTimer((prev) => prev - 1);
-  };
-
   useEffect(() => {
     timerId.current = setInterval(() => {
       decrementTimer();
@@ -18,9 +19,9 @@ const Timer = ({ changeImgColor, changeGenerateBtnCursor, changeCursor, changeWa
     if (timer <= 0) {
       clearInterval(timerId.current);
       changeImgColor();
-      changeGenerateBtnCursor()
-      changeCursor()
-      changeWarning()
+      changeGenerateBtnCursor();
+      cursorHandler();
+      warningHandler("Time is up !");
     }
   }, [timer]);
 
